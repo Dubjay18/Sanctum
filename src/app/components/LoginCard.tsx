@@ -1,4 +1,5 @@
 import React from "react";
+import TextInput from "./global/TextInput";
 
 function LoginCard() {
   return (
@@ -6,6 +7,9 @@ function LoginCard() {
       <h1 className='flex items-center justify-center font-bold  md:text-2xl text-lg'>
         LoginCard
       </h1>
+      <div>
+        <TextInput type='text' />
+      </div>
     </div>
   );
 }
