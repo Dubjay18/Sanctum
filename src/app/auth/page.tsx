@@ -3,7 +3,7 @@ import LoginCard from "../components/LoginCard";
 
 function Auth() {
   return (
-    <div className='min-h-[90vh] flex items-center justify-center'>
+    <div className='min-h-[100vh]  bg-primary/60 flex items-center justify-center'>
       <LoginCard />
     </div>
   );

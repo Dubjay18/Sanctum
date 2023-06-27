@@ -1,7 +1,7 @@
 import "../globals.css";
-import { Inter } from "next/font/google";
+import { Inter, Rubik } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+const rubik = Rubik({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Auth",
@@ -15,11 +15,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body
-        className={`${inter.className} bg-neutral text-white`}>
-        <nav>Navbar</nav>
+      <body className={`${rubik.className}  text-white`}>
+        <nav className='fixed'>Navbar</nav>
         {children}
-        <footer>Footer</footer>
       </body>
     </html>
   );
