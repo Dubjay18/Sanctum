@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
-import connectDb from "../../../../middleware/mongoose";
-import mongoose from "mongoose";
+
 export async function GET() {
   return NextResponse.json({ hello: "login" });
 }
@@ -12,7 +11,6 @@ export async function POST(request: Request) {
   let data;
   let body;
   try {
-    await connectDb();
     body = await request.json();
 
     console.log("Dbconnected");

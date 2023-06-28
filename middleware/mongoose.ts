@@ -35,12 +35,12 @@ const connectDB = async () => {
   try {
     if (mongoose.connection.readyState === 0) {
       await mongoose.connect(
-        "mongodb://localhost:27017/sanctum"
+        "mongodb+srv://Dubjay:hRKxGpJzBy04kptO@cluster0.9wpoy.mongodb.net/"
       );
       console.log("db connected");
     }
   } catch (error) {
-    console.log(error);
+    console.log(error, "dberror");
   }
 };
 

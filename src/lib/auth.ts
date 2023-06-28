@@ -1,7 +1,11 @@
 import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import clientPromise from "../../middleware/mongoose";
+import { MongoDBAdapter } from "@auth/mongodb-adapter";
+import connectDB from "../../middleware/mongoose";
 
 export const authOptions: NextAuthOptions = {
+  //   adapter: MongoDBAdapter(clientPromise.then(client => client)),
   session: {
     strategy: "jwt",
   },
@@ -17,6 +21,9 @@ export const authOptions: NextAuthOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
+        await connectDB().catch((err) => {
+          throw new Error(err);
+        });
         const user = {
           id: "1",
           name: "Admin",
