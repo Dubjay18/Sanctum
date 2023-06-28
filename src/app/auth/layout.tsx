@@ -1,5 +1,8 @@
 import "../globals.css";
 import { Inter, Rubik } from "next/font/google";
+import LoginSvg from "../../assets/login_svg.svg";
+import AuthSvg from "../../assets/auth_svg2.svg";
+import Image from "next/image";
 
 const rubik = Rubik({ subsets: ["latin"] });
 
@@ -15,8 +18,27 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body className={`${rubik.className}  text-white`}>
-        <nav className='fixed'>Navbar</nav>
+      <body
+        className={`${rubik.className} relative text-white overflow-x-hidden`}>
+        <nav className='fixed z-20 '>
+          <div className='p-5'>
+            <h1 className=' text-black font-bold text-xl'>
+              {" "}
+              Sanctum
+            </h1>
+            <hr className='text-black border-black ' />
+          </div>
+        </nav>
+        <Image
+          src={LoginSvg}
+          alt='login_svg'
+          className='absolute max-h-48 left-0 top-72 z-20'
+        />
+        <Image
+          src={AuthSvg}
+          alt='auth_svg'
+          className='absolute max-h-48 -right-56 top-72 z-20'
+        />
         {children}
       </body>
     </html>

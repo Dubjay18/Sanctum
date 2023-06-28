@@ -1,8 +1,16 @@
+"use client";
+
 import React from "react";
 import TextInput from "./global/TextInput";
 import Button from "./global/Button";
+import { LoginButton } from "./AuthButtons";
+
+import { useSession } from "next-auth/react";
 
 function LoginCard() {
+  const { data: session } = useSession();
+  console.log(session);
+
   return (
     <div className='rounded-2xl bg-white shadow text-black min-h-[50vh] min-w-[400px] py-5 px-10'>
       <h1 className='flex items-center justify-center font-bold  md:text-xl text-lg'>
@@ -21,7 +29,7 @@ function LoginCard() {
       <div className='my-6'>
         <TextInput type='password' placeholder='Password' />
       </div>
-      <Button block>Button</Button>
+      <LoginButton />
       <p className='flex items-center justify-center gap-5 my-7'>
         - Or Sign with -
       </p>
