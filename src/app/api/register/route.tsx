@@ -9,10 +9,7 @@ export async function GET() {
   return NextResponse.json({ hello: "login" });
 }
 
-export async function POST(
-  request: Request,
-  response: Response
-) {
+export async function POST(request: Request) {
   // connectDb();
   connectDB().catch((err) => console.log(err));
 
@@ -51,24 +48,24 @@ export async function POST(
         password: hashPassword(body.password),
       })
         .then(() => {
-          console.log("user created");
-          console.log("here");
-          new NextResponse(
+          return new NextResponse(
             JSON.stringify({ message: "User Created" }),
             { status: 201 }
           );
         })
         .catch((err) => {
-          new NextResponse(
+          return new NextResponse(
             JSON.stringify({ message: err }),
             { status: 500 }
           );
           console.log("here", err);
         });
     }
-    console.log("here");
+    return NextResponse.json({
+      message: "success",
+      status: "201",
+    });
   } catch (e) {
-    console.log(e, "err");
     return new NextResponse(
       JSON.stringify({ message: e }),
       {
@@ -76,4 +73,5 @@ export async function POST(
       }
     );
   }
+  // return NextResponse.json({ message: "done" });
 }

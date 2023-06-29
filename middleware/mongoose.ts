@@ -35,13 +35,12 @@ const connectDB = async () => {
   try {
     if (mongoose.connection.readyState === 0) {
       await mongoose.connect(
-        process.env.MONGODB_URI ||
-          "mongodb://localhost:27017"
+        process.env.MONGO_URI || "mongodb://localhost:27017"
       );
-      console.log("db connected");
+      console.log(process.env.MONGODB_URI);
     }
   } catch (error) {
-    console.log(error, "dberror");
+    console.log(error, "dberror", process.env.MONGO_URI);
   }
 };
 
