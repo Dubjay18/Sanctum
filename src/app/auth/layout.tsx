@@ -32,12 +32,12 @@ export default function RootLayout({
         <Image
           src={LoginSvg}
           alt='login_svg'
-          className='absolute max-h-48 left-0 top-72 z-20'
+          className='absolute max-w-[300px] left-10 top-72 z-20'
         />
         <Image
           src={AuthSvg}
           alt='auth_svg'
-          className='absolute max-h-48 -right-56 top-72 z-20'
+          className='absolute max-w-[300px] right-10 top-72 z-20'
         />
         {children}
       </body>

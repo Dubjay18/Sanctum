@@ -4,3 +4,7 @@ export interface IUser {
   username?: string;
   password?: string;
 }
+export interface IToast {
+  text: string;
+  type?: "success" | "error";
+}

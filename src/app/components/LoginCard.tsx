@@ -35,7 +35,9 @@ function LoginCard() {
       </p>
       <p className='flex items-center justify-center gap-5 my-7'>
         Dont have account?
-        <span className='text-primary'>Register now</span>
+        <span className='text-primary cursor pointer hover:underline duration-200 transition-all'>
+          Register now
+        </span>
       </p>
     </div>
   );

@@ -1,5 +1,6 @@
 import React from "react";
 import clsx from "clsx";
+import Loader from "./Loader";
 interface IButtonProps {
   className?: string;
   children: React.ReactNode;
@@ -16,6 +17,7 @@ interface IButtonProps {
   style?: object;
   type?: "submit" | "button";
   loading?: boolean;
+  disabled?: boolean;
 }
 const classes = {
   btnPrimary: "bg-primary",
@@ -31,6 +33,7 @@ function Button({
   style,
   loading,
   onClick,
+  disabled,
 }: IButtonProps) {
   const buttonTheme = clsx({
     [classes.btnPrimary]: theme == "primary",
@@ -41,10 +44,11 @@ function Button({
       style={style}
       type={type}
       onClick={onClick}
+      disabled={disabled || loading}
       className={`${className} ${
         block ? "w-full" : ""
-      } ${buttonTheme} text-white py-4 px-7 rounded-lg hover:opacity-60 `}>
-      {loading ? "loading..." : children}
+      } ${buttonTheme} text-white py-4 px-7 disabled:opacity-50 rounded-lg hover:opacity-60 `}>
+      {loading ? <Loader /> : children}
     </button>
   );
 }

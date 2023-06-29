@@ -12,16 +12,18 @@ import axios from "axios";
 import { useState } from "react";
 import { IUser } from "@/types";
 import { useRouter } from "next/navigation";
+import { notify } from "@/lib/toastify";
 
 function RegisterCard() {
-  const { data: session } = useSession();
   const [email, setEmail] = useState("");
   const [password, setPasword] = useState("");
   const [username, setUsername] = useState("");
   const router = useRouter();
-  console.log(session);
+
   const [loading, setLoading] = useState(false);
   const SignupFunc = () => {
+    if (!email || !password || !username)
+      return alert("Please fill all the fields");
     setLoading(true);
     axios
       .post("http://localhost:3000/api/register", {
@@ -32,11 +34,13 @@ function RegisterCard() {
       .then((response) => {
         setLoading(false);
         console.log(response);
+        notify("Account Created", "success");
         router.push("/auth");
       })
       .catch((err) => {
         setLoading(false);
         console.log(err);
+        notify(err?.response?.data?.message, "error");
       });
   };
   return (
@@ -74,11 +78,12 @@ function RegisterCard() {
       <RegisterButton
         loading={loading}
         onClick={SignupFunc}
+        type='submit'
       />
 
       <p className='flex items-center justify-center gap-5 my-7'>
         Have account?
-        <span className='text-primary'>
+        <span className='text-primary cursor-pointer hover:underline transition-all duration-200'>
           {" "}
           <Link href='/auth'>Login</Link>
         </span>
