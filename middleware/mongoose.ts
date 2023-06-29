@@ -35,7 +35,8 @@ const connectDB = async () => {
   try {
     if (mongoose.connection.readyState === 0) {
       await mongoose.connect(
-        "mongodb+srv://Dubjay:hRKxGpJzBy04kptO@cluster0.9wpoy.mongodb.net/"
+        process.env.MONGODB_URI ||
+          "mongodb://localhost:27017"
       );
       console.log("db connected");
     }

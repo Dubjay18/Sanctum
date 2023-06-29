@@ -5,22 +5,17 @@ import { NextApiResponse } from "next";
 import User from "@/models/user";
 import mongoose from "mongoose";
 
-interface IUser {
-  _id?: string;
-  email: string;
-  username: string;
-}
 export async function GET() {
   return NextResponse.json({ hello: "login" });
 }
 
 export async function POST(
   request: Request,
-  response: NextApiResponse
+  response: Response
 ) {
   // connectDb();
-  connectDB().catch((err) => response.json(err));
-  let client;
+  connectDB().catch((err) => console.log(err));
+
   let data;
   let body;
   function hashPassword(password: string) {
@@ -37,14 +32,18 @@ export async function POST(
       email: body.email,
     });
     if (userExists) {
-      return NextResponse.json({
-        error: "User Already exists",
-      });
+      return new NextResponse(
+        JSON.stringify({ message: "User already exists" }),
+        { status: 409 }
+      );
     } else {
       if (body.password.length < 6)
-        return NextResponse.json({
-          error: "Password should be 6 characters long",
-        });
+        return new NextResponse(
+          JSON.stringify({
+            message: "Password is too short",
+          }),
+          { status: 409 }
+        );
 
       User.create({
         username: body.username,
@@ -54,16 +53,27 @@ export async function POST(
         .then(() => {
           console.log("user created");
           console.log("here");
-          NextResponse.json({ message: "user created" });
+          new NextResponse(
+            JSON.stringify({ message: "User Created" }),
+            { status: 201 }
+          );
         })
         .catch((err) => {
-          NextResponse.json({ error: err });
+          new NextResponse(
+            JSON.stringify({ message: err }),
+            { status: 500 }
+          );
           console.log("here", err);
         });
     }
     console.log("here");
   } catch (e) {
     console.log(e, "err");
-    return NextResponse.json({ error: e });
+    return new NextResponse(
+      JSON.stringify({ message: e }),
+      {
+        status: 500,
+      }
+    );
   }
 }

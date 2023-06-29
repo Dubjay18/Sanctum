@@ -15,6 +15,7 @@ interface IButtonProps {
     | undefined;
   style?: object;
   type?: "submit" | "button";
+  loading?: boolean;
 }
 const classes = {
   btnPrimary: "bg-primary",
@@ -28,6 +29,7 @@ function Button({
   theme = "primary",
   type,
   style,
+  loading,
   onClick,
 }: IButtonProps) {
   const buttonTheme = clsx({
@@ -42,7 +44,7 @@ function Button({
       className={`${className} ${
         block ? "w-full" : ""
       } ${buttonTheme} text-white py-4 px-7 rounded-lg hover:opacity-60 `}>
-      {children}
+      {loading ? "loading..." : children}
     </button>
   );
 }

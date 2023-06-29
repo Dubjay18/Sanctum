@@ -3,6 +3,9 @@
 import { signIn, signOut } from "next-auth/react";
 import Link from "next/link";
 import Button from "./global/Button";
+import axios from "axios";
+import { IUser } from "@/types";
+import React, { useState } from "react";
 
 export const LoginButton = () => {
   return (
@@ -16,11 +19,19 @@ export const LoginButton = () => {
   );
 };
 
-export const RegisterButton = () => {
+export const RegisterButton = ({
+  onClick,
+  loading,
+}: any) => {
   return (
-    <Link href='/register' style={{ marginRight: 10 }}>
-      Register
-    </Link>
+    <Button
+      style={{ marginRight: 10 }}
+      block
+      type='button'
+      onClick={onClick}
+      loading={loading}>
+      SignUp
+    </Button>
   );
 };
 
