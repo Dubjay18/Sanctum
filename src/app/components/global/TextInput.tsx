@@ -8,6 +8,8 @@ interface ITextInputProps {
     | ChangeEventHandler<HTMLInputElement>
     | undefined;
   value?: string | number | readonly string[] | undefined;
+  id?: string;
+  name?: string;
 }
 
 function TextInput({
@@ -16,6 +18,8 @@ function TextInput({
   placeholder,
   onChange,
   value,
+  id,
+  name,
 }: ITextInputProps) {
   return (
     <div>
@@ -25,6 +29,8 @@ function TextInput({
         placeholder={placeholder}
         onChange={onChange}
         value={value}
+        id={id}
+        name={name}
       />
     </div>
   );

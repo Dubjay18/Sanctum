@@ -12,8 +12,9 @@ export const LoginButton = () => {
     <Button
       style={{ marginRight: 10 }}
       block
-      type='button'
-      onClick={() => signIn()}>
+      type='submit'
+      // onClick={() => signIn()}
+    >
       Sign in
     </Button>
   );

@@ -44,7 +44,7 @@ function RegisterCard() {
       });
   };
   return (
-    <div className='rounded-2xl bg-white shadow text-black min-h-[50vh] min-w-[400px] z-30 py-5 px-10'>
+    <div className='rounded-2xl bg-white shadow text-black min-h-[50vh] md:min-w-[400px] py-5 px-5 md:px-10'>
       <h1 className='flex items-center justify-center font-bold  md:text-xl text-lg'>
         RegisterCard
       </h1>
