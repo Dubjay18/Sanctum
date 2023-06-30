@@ -33,10 +33,10 @@ export default function RootLayout({
     }
   }, [session, router]);
   return (
-    <html lang='en'>
-      <body
+    <div>
+      <div
         className={`${rubik.className} relative text-white overflow-x-hidden`}>
-        <nav className='fixed z-20 '>
+        <div className='fixed z-20 '>
           <div className='p-5'>
             <h1 className=' text-black font-bold text-xl'>
               {" "}
@@ -44,7 +44,7 @@ export default function RootLayout({
             </h1>
             <hr className='text-black border-black ' />
           </div>
-        </nav>
+        </div>
         <div>
           <Image
             src={LoginSvg}
@@ -74,7 +74,7 @@ export default function RootLayout({
           />
         </div>
         {children}
-      </body>
-    </html>
+      </div>
+    </div>
   );
 }
