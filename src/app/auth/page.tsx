@@ -1,5 +1,5 @@
 import React from "react";
-import LoginCard from "../components/LoginCard";
+
 import LoginSvg from "../../assets/login_svg.svg";
 import AuthSvg from "../../assets/auth_svg2.svg";
 import Image from "next/image";
@@ -8,24 +8,15 @@ import {
   InferGetServerSidePropsType,
 } from "next";
 import { getCsrfToken } from "next-auth/react";
+import AuthCard from "../components/AuthCard";
 
-function Auth({
-  csrfToken,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+function Auth() {
   return (
     <div className='min-h-[100vh] overflow-x-hidden relative bg-primary/60 z-10 flex items-center justify-center'>
-      <LoginCard csrfToken={csrfToken} />
+      <AuthCard  />
     </div>
   );
 }
 
 export default Auth;
-export async function getServerSideProps(
-  context: GetServerSidePropsContext
-) {
-  return {
-    props: {
-      csrfToken: await getCsrfToken(context),
-    },
-  };
-}
+

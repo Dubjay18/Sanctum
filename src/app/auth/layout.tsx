@@ -27,11 +27,11 @@ export default function RootLayout({
 }) {
   const router = useRouter();
   const { data: session } = useSession();
-  useEffect(() => {
-    if (session) {
-      router.push("/main");
-    }
-  }, [session, router]);
+  // useEffect(() => {
+  //   if (session) {
+  //     router.push("/main");
+  //   }
+  // }, [session, router]);
   return (
     <div>
       <div

@@ -15,14 +15,13 @@ import {
   useSession,
 } from "next-auth/react";
 import Link from "next/link";
-import { getServerSideProps } from "../auth/page";
 import axios from "axios";
 import {
   FieldValues,
   SubmitHandler,
   useForm,
 } from "react-hook-form";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 import Input from "./inputs/Input";
 import AuthSocialButton from "./AuthSocialButton";
@@ -35,11 +34,11 @@ function AuthCard() {
   const [variant, setVariant] = useState<Variant>("LOGIN");
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    if (session?.status === "authenticated") {
-      router.push("/conversations");
-    }
-  }, [session?.status, router]);
+  // useEffect(() => {
+  //   if (session?.status === "authenticated") {
+  //     router.push("/conversations");
+  //   }
+  // }, [session?.status, router]);
 
   const toggleVariant = useCallback(() => {
     if (variant === "LOGIN") {
@@ -162,11 +161,14 @@ function AuthCard() {
         type='password'
       />
       <div>
-        <Button disabled={isLoading} type='submit'>
+        <Button
+          disabled={isLoading}
+          type='submit'
+          className='w-full my-5'>
           {variant === "LOGIN" ? "Sign in" : "Register"}
         </Button>
       </div>
-      <LoginButton />
+
       <p className='flex items-center justify-center gap-5 my-7'>
         - Or Sign with -
       </p>
