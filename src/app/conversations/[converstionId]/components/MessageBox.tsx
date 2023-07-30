@@ -5,9 +5,9 @@ import Image from "next/image";
 import { useState } from "react";
 import { format } from "date-fns";
 import { useSession } from "next-auth/react";
-import { FullMessageType } from "../../../../typings";
 import Avatar from "@/app/components/main/Avatar";
 import ImageModal from "./ImageModal";
+import { FullMessageType } from "../../../../../typings";
 
 interface MessageBoxProps {
   data: FullMessageType;
