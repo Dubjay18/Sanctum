@@ -4,7 +4,7 @@ import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 
 import MessageBox from "./MessageBox";
-import { FullMessageType } from "../../../../typings";
+import { FullMessageType } from "../../../../../typings";
 import useConversation from "@/hooks/useConversation";
 import { pusherClient } from "@/lib/pusher";
 import { find } from "lodash";
