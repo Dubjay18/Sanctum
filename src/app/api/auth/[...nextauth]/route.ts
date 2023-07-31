@@ -17,6 +17,11 @@ export const authOptions: NextAuthOptions = {
       clientId: process.env.GOOGLE_CLIENT_ID as string,
       clientSecret: process.env
         .GOOGLE_CLIENT_SECRET as string,
+      authorization: {
+        params: {
+          redirect_uri: "https://sanctum-jay.vercel.app",
+        },
+      },
     }),
     CredentialsProvider({
       name: "credentials",
