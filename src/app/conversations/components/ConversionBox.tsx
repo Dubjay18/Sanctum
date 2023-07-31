@@ -72,11 +72,6 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
     return "Started a conversation";
   }, [lastMessage]);
 
-  useEffect(() => {
-    console.log(session);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [session]);
-
   return (
     <div
       onClick={handleClick}

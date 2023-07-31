@@ -6,14 +6,16 @@ import getConversationById from "@/actions/getConversationById";
 import getMessages from "@/actions/getMessage";
 
 interface IParams {
-  conversationId: string;
+  converstionId: string;
 }
 
 const ChatId = async ({ params }: { params: IParams }) => {
+  console.log(params, "params");
+  
   const conversation = await getConversationById(
-    params.conversationId
+    params.converstionId
   );
-  const messages = await getMessages(params.conversationId);
+  const messages = await getMessages(params.converstionId);
 
   if (!conversation) {
     return (
