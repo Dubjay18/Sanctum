@@ -1,10 +1,13 @@
-import Image from "next/image";
-import Sidebar from "./components/main/Sidebar";
+import React from "react";
 
-export default function Home() {
+import AuthCard from "./components/AuthCard";
+
+function Auth() {
   return (
-    <Sidebar>
-      <h1>yo</h1>
-    </Sidebar>
+    <div className='min-h-[100vh] overflow-x-hidden relative bg-primary/60 z-10 flex items-center justify-center'>
+      <AuthCard />
+    </div>
   );
 }
+
+export default Auth;

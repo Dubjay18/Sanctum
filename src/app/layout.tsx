@@ -2,6 +2,9 @@ import { NextAuthProvider } from "./providers";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./globals.css";
+import AuthContext from "./context/AuthContext";
+import ToasterContext from "./context/ToasterContext";
+import ActiveStatus from "./components/ActiveStatus";
 
 export const metadata = {
   title: "Sanctum",
@@ -16,8 +19,11 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body>
-        <NextAuthProvider>{children}</NextAuthProvider>
-        <ToastContainer />
+        <AuthContext>
+          <ToasterContext />
+          <ActiveStatus />
+          {children}
+        </AuthContext>
       </body>
     </html>
   );
