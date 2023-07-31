@@ -12,21 +12,12 @@ export const authOptions: NextAuthOptions = {
     GithubProvider({
       clientId: process.env.GITHUB_ID as string,
       clientSecret: process.env.GITHUB_SECRET as string,
-      authorization: {
-        params: {
-          redirect_uri: "https://sanctum-jay.vercel.app",
-        },
-      },
+    
     }),
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID as string,
       clientSecret: process.env
         .GOOGLE_CLIENT_SECRET as string,
-      authorization: {
-        params: {
-          redirect_uri: "https://sanctum-jay.vercel.app",
-        },
-      },
     }),
     CredentialsProvider({
       name: "credentials",
@@ -57,14 +48,21 @@ export const authOptions: NextAuthOptions = {
         if (!isCorrectPassword) {
           throw new Error("Invalid credentials");
         }
+if(user){
+  return user;
+}else{
+  throw new Error("failed to login");
 
-        return user;
+}
       },
     }),
   ],
   debug: process.env.NODE_ENV === "development",
   session: {
     strategy: "jwt",
+  },
+  pages: {
+    signIn: "/",
   },
   secret: process.env.NEXTAUTH_SECRET,
 };

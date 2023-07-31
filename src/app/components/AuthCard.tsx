@@ -39,6 +39,10 @@ function AuthCard() {
   //     router.push("/conversations");
   //   }
   // }, [session?.status, router]);
+  useEffect(() => {
+    console.log(session);
+  }, [session]);
+    
 
   const toggleVariant = useCallback(() => {
     if (variant === "LOGIN") {
@@ -62,6 +66,8 @@ function AuthCard() {
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
+    console.log(data,"da");
+    
 
     if (variant === "REGISTER") {
       axios
@@ -78,8 +84,9 @@ function AuthCard() {
           }
 
           if (callback?.ok) {
-            router.push("/conversations");
-          }
+            // router.push("/conversations");
+          console.log(callback);
+                   }
         })
         .catch(() => toast.error("Something went wrong!"))
         .finally(() => setIsLoading(false));
@@ -96,6 +103,8 @@ function AuthCard() {
           }
 
           if (callback?.ok) {
+                 // router.push("/conversations");
+          console.log(callback);
             router.push("/conversations");
           }
         })

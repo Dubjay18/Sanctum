@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import {
   Conversation,
@@ -71,6 +71,11 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
 
     return "Started a conversation";
   }, [lastMessage]);
+
+  useEffect(() => {
+    console.log(session);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [session]);
 
   return (
     <div

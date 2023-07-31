@@ -2,6 +2,7 @@
 import getUsers from "@/actions/getUsers";
 import UserList from "./components/UserList";
 import Sidebar from "../components/main/Sidebar";
+import getCurrentUser from "@/actions/getCurrentUser";
 
 export default async function UsersLayout({
   children
@@ -9,6 +10,7 @@ export default async function UsersLayout({
   children: React.ReactNode,
 }) {
   const users = await getUsers();
+
 
   return (
 

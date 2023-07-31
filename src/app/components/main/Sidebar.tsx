@@ -7,10 +7,8 @@ function Sidebar({
 }: {
   children: React.ReactNode;
 }) {
-  // const currentUser = getCurrentUser();
-  const currentUser = {
-    name: "jay",
-  };
+  const currentUser = getCurrentUser();
+
   return (
     <div className='h-full bg-black'>
       <DesktopSidebar currentUser={currentUser!} />

@@ -41,6 +41,7 @@ const ConversationList: React.FC<ConversationListProps> = ({
       return;
     }
 
+  
     pusherClient.subscribe(pusherKey);
 
     const updateHandler = (
