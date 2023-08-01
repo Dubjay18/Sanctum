@@ -12,7 +12,7 @@ import { CldUploadButton } from "next-cloudinary";
 import useConversation from "@/hooks/useConversation";
 import MessageInput from "./MessageInput";
 const Form = () => {
-  const { conversationId } = useConversation();
+  const { converstionId } = useConversation();
 
   const {
     register,
@@ -29,14 +29,14 @@ const Form = () => {
     setValue("message", "", { shouldValidate: true });
     axios.post("/api/messages", {
       ...data,
-      conversationId: conversationId,
+      conversationId: converstionId,
     });
   };
 
   const handleUpload = (result: any) => {
     axios.post("/api/messages", {
       image: result.info.secure_url,
-      conversationId: conversationId,
+      conversationId: converstionId,
     });
   };
 
@@ -45,7 +45,7 @@ const Form = () => {
       className='
         py-4 
         px-4 
-        bg-white 
+        bg-primary
         border-t 
         flex 
         items-center 

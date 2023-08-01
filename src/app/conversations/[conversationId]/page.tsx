@@ -6,16 +6,16 @@ import getConversationById from "@/actions/getConversationById";
 import getMessages from "@/actions/getMessage";
 
 interface IParams {
-  converstionId: string;
+  conversationId: string;
 }
 
 const ChatId = async ({ params }: { params: IParams }) => {
   console.log(params, "params");
   
   const conversation = await getConversationById(
-    params.converstionId
+    params.conversationId
   );
-  const messages = await getMessages(params.converstionId);
+  const messages = await getMessages(params.conversationId);
 
   if (!conversation) {
     return (
@@ -29,7 +29,7 @@ const ChatId = async ({ params }: { params: IParams }) => {
 
   return (
     <div className='lg:pl-80 h-full'>
-      <div className='h-full flex flex-col'>
+      <div className='min-h-screen flex flex-col'>
         <Header conversation={conversation} />
         <Body initialMessages={messages} />
         <Form />

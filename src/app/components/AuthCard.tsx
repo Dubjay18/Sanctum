@@ -132,8 +132,8 @@ function AuthCard() {
     <form
       onSubmit={handleSubmit(onSubmit)}
       className='rounded-2xl bg-white shadow text-black min-h-[50vh] md:min-w-[400px] py-5 px-5 md:px-10'>
-      <h1 className='flex items-center justify-center font-bold  md:text-xl text-lg'>
-        AuthCard
+      <h1 className='flex items-center justify-center font-bold  md:text-xl text-lg underline'>
+      Sanctum
       </h1>
       <p className='text-center my-4 max-w-sm'>
         Hey, Enter your details to get signed into your
