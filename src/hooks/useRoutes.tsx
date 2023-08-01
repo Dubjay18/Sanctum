@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { HiChat } from "react-icons/hi";
 import {
   HiArrowLeftOnRectangle,
@@ -11,7 +11,7 @@ import useConversation from "./useConversation";
 const useRoutes = () => {
   const pathname = usePathname();
   const { conversationId } = useConversation();
-
+  const router = useRouter();
   const routes = useMemo(
     () => [
       {
@@ -29,12 +29,13 @@ const useRoutes = () => {
       },
       {
         label: "Logout",
-        onClick: () => signOut(),
+        onClick: () =>
+          signOut().then(() => router.push("/")),
         href: "#",
         icon: HiArrowLeftOnRectangle,
       },
     ],
-    [pathname, conversationId]
+    [pathname, conversationId, router]
   );
 
   return routes;
