@@ -12,7 +12,6 @@ export const authOptions: NextAuthOptions = {
     GithubProvider({
       clientId: process.env.GITHUB_ID as string,
       clientSecret: process.env.GITHUB_SECRET as string,
-    
     }),
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID as string,
@@ -48,12 +47,11 @@ export const authOptions: NextAuthOptions = {
         if (!isCorrectPassword) {
           throw new Error("Invalid credentials");
         }
-if(user){
-  return user;
-}else{
-  throw new Error("failed to login");
-
-}
+        if (user) {
+          return user;
+        } else {
+          throw new Error("failed to login");
+        }
       },
     }),
   ],

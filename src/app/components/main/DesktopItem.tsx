@@ -23,7 +23,7 @@ const DesktopItem: React.FC<DesktopItemProps> = ({
   };
 
   return (
-    <li onClick={handleClick} key={label}>
+    <li onClick={handleClick} className='my-2' key={label}>
       <Link
         href={href}
         className={clsx(
@@ -38,7 +38,8 @@ const DesktopItem: React.FC<DesktopItemProps> = ({
             font-semibold 
             text-gray-500 
             hover:text-black 
-            hover:bg-gray-100
+            hover:bg-gray-200
+            my-2
           `,
           active && "bg-gray-100 text-black"
         )}>

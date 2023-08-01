@@ -42,7 +42,6 @@ function AuthCard() {
   useEffect(() => {
     console.log(session);
   }, [session]);
-    
 
   const toggleVariant = useCallback(() => {
     if (variant === "LOGIN") {
@@ -66,8 +65,6 @@ function AuthCard() {
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
-    console.log(data,"da");
-    
 
     if (variant === "REGISTER") {
       axios
@@ -81,12 +78,13 @@ function AuthCard() {
         .then((callback) => {
           if (callback?.error) {
             toast.error("Invalid credentials!");
+          } else {
+            if (callback?.ok) {
+              toast.success("Logging in");
+              // router.push("/conversations");
+              console.log(callback);
+            }
           }
-
-          if (callback?.ok) {
-            // router.push("/conversations");
-          console.log(callback);
-                   }
         })
         .catch(() => toast.error("Something went wrong!"))
         .finally(() => setIsLoading(false));
@@ -100,12 +98,13 @@ function AuthCard() {
         .then((callback) => {
           if (callback?.error) {
             toast.error("Invalid credentials!");
-          }
+          } else {
+            if (callback?.ok) {
+              // router.push("/conversations");
+              toast.success("Logging in");
 
-          if (callback?.ok) {
-                 // router.push("/conversations");
-          console.log(callback);
-            router.push("/conversations");
+              router.push("/conversations");
+            }
           }
         })
         .finally(() => setIsLoading(false));
@@ -119,10 +118,11 @@ function AuthCard() {
       .then((callback) => {
         if (callback?.error) {
           toast.error("Invalid credentials!");
-        }
-
-        if (callback?.ok) {
-          router.push("/conversations");
+        } else {
+          if (callback?.ok) {
+            toast.success("Logging in");
+            router.push("/conversations");
+          }
         }
       })
       .finally(() => setIsLoading(false));
@@ -133,7 +133,7 @@ function AuthCard() {
       onSubmit={handleSubmit(onSubmit)}
       className='rounded-2xl bg-white shadow text-black min-h-[50vh] md:min-w-[400px] py-5 px-5 md:px-10'>
       <h1 className='flex items-center justify-center font-bold  md:text-xl text-lg underline'>
-      Sanctum
+        Sanctum
       </h1>
       <p className='text-center my-4 max-w-sm'>
         Hey, Enter your details to get signed into your
