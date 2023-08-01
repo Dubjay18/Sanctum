@@ -43,6 +43,8 @@ const MessageBox: React.FC<MessageBoxProps> = ({
     isOwn ? "bg-sky-500 text-white" : "bg-gray-100",
     data.image ? "rounded-md p-0" : "rounded-full py-2 px-3"
   );
+ 
+  
 
   return (
     <div className={container}>

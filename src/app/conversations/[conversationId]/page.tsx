@@ -16,6 +16,7 @@ const ChatId = async ({ params }: { params: IParams }) => {
     params.conversationId
   );
   const messages = await getMessages(params.conversationId);
+console.log(messages, "messages");
 
   if (!conversation) {
     return (
