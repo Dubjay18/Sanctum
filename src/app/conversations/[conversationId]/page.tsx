@@ -10,13 +10,13 @@ interface IParams {
 }
 
 const ChatId = async ({ params }: { params: IParams }) => {
-  console.log(params, "params");
-  
+  // console.log(params, "params");
+
   const conversation = await getConversationById(
     params.conversationId
   );
   const messages = await getMessages(params.conversationId);
-console.log(messages, "messages");
+  // console.log(messages, "messages");
 
   if (!conversation) {
     return (

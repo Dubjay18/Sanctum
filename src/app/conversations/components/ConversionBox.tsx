@@ -14,6 +14,7 @@ import Avatar from "@/app/components/main/Avatar";
 import useOtherUser from "@/hooks/useOtherUser";
 import { FullConversationType } from "../../../../typings";
 import AvatarGroup from "@/app/components/main/AvatarGroup";
+import { format } from "date-fns";
 
 interface ConversationBoxProps {
   data: FullConversationType;
@@ -89,7 +90,9 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
         transition
         cursor-pointer
         `,
-        selected ? "bg-neutral-100" : "bg-white"
+        selected
+          ? "bg-neutral-100"
+          : "bg-primary-foreground"
       )}>
       {data.isGroup ? (
         <AvatarGroup users={data.users} />
@@ -113,7 +116,10 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
                   text-gray-400 
                   font-light
                 '>
-                {/* {format(new Date(lastMessage.createdAt), 'p')} */}
+                {format(
+                  new Date(lastMessage.createdAt),
+                  "p"
+                )}
               </p>
             )}
           </div>

@@ -34,11 +34,11 @@ function AuthCard() {
   const [variant, setVariant] = useState<Variant>("LOGIN");
   const [isLoading, setIsLoading] = useState(false);
 
-  // useEffect(() => {
-  //   if (session?.status === "authenticated") {
-  //     router.push("/conversations");
-  //   }
-  // }, [session?.status, router]);
+  useEffect(() => {
+    if (session?.status === "authenticated") {
+      router.push("/conversations");
+    }
+  }, [session?.status, router]);
   useEffect(() => {
     console.log(session);
   }, [session]);
