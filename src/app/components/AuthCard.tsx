@@ -81,7 +81,7 @@ function AuthCard() {
           } else {
             if (callback?.ok) {
               toast.success("Logging in");
-              // router.push("/conversations");
+              router.push("/conversations");
               console.log(callback);
             }
           }
@@ -100,7 +100,6 @@ function AuthCard() {
             toast.error("Invalid credentials!");
           } else {
             if (callback?.ok) {
-              // router.push("/conversations");
               toast.success("Logging in");
 
               router.push("/conversations");
