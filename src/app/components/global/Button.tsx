@@ -4,7 +4,7 @@ import Loader from "./Loader";
 interface IButtonProps {
   className?: string;
   children: React.ReactNode;
-  theme?: "primary" | "secondary";
+  theme?: "primary" | "secondary" | "fprimary";
   block?: boolean;
   onClick?:
     | ((
@@ -21,7 +21,8 @@ interface IButtonProps {
 }
 const classes = {
   btnPrimary: "bg-primary",
-  btnSecondary: "bg-secondary",
+  btnFprimary: "bg-primary-foreground !text-black",
+  btnSecondary: "bg-secondary !text-black",
 };
 
 function Button({
@@ -37,6 +38,7 @@ function Button({
 }: IButtonProps) {
   const buttonTheme = clsx({
     [classes.btnPrimary]: theme == "primary",
+    [classes.btnFprimary]: theme == "fprimary",
     [classes.btnSecondary]: theme == "secondary",
   });
   return (

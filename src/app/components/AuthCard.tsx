@@ -131,7 +131,7 @@ function AuthCard() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className='rounded-2xl bg-white shadow text-black min-h-[50vh] md:min-w-[400px] py-5 px-5 md:px-10'>
+      className='rounded-2xl bg-card-foreground text-white shadow  min-h-[50vh] md:min-w-[400px] py-5 px-5 md:px-10'>
       <h1 className='flex items-center justify-center font-bold  md:text-xl text-lg underline'>
         Sanctum
       </h1>
@@ -173,7 +173,7 @@ function AuthCard() {
         <Button
           disabled={isLoading}
           type='submit'
-          className='w-full my-5'>
+          className='w-full my-5 '>
           {variant === "LOGIN" ? "Sign in" : "Register"}
         </Button>
       </div>
