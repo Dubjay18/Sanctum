@@ -4,9 +4,11 @@ import useRoutes from "@/hooks/useRoutes";
 import DesktopItem from "./DesktopItem";
 
 // import SettingsModal from "./SettingsModal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Avatar from "./Avatar";
 import SettingsModal from "./SettingsModal";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 // import Avatar from "../Avatar";
 // import { User } from "@prisma/client";
 
@@ -19,6 +21,13 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({
 }) => {
   const routes = useRoutes();
   const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
+  const session = useSession();
+  useEffect(() => {
+    if (session?.status !== "authenticated") {
+      router.push("/");
+    }
+  }, [session?.status, router]);
   return (
     <>
       <SettingsModal
