@@ -15,7 +15,9 @@ export default async function handler(
     );
 
     if (!session?.user?.email) {
-      return res.status(401).end();
+      return res
+        .status(401)
+        .send({ message: "No session" });
     }
 
     const { socket_id: socketId, channel_name: channel } =

@@ -35,10 +35,17 @@ function AuthCard() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    if (session?.status === "authenticated") {
-      router.push("/conversations");
+    // Exit if the session is not authenticated
+    if (!session || session.status !== "authenticated") {
+      return;
     }
-  }, [session?.status, router]);
+
+    // Redirect to the "conversations" page
+    setTimeout(() => {
+      router.push("/conversations");
+    }, 100);
+  }, [session, router]);
+
   // useEffect(() => {
   //   console.log(session);
   // }, [session]);
