@@ -17,7 +17,9 @@ export default async function handler(
     if (!session?.user?.email) {
       return res
         .status(401)
-        .send({ message: "No session" });
+        .json({
+          error: "Unauthorized: No session or user email.",
+        });
     }
 
     const { socket_id: socketId, channel_name: channel } =
