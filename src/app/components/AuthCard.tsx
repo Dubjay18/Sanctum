@@ -39,9 +39,9 @@ function AuthCard() {
       router.push("/conversations");
     }
   }, [session?.status, router]);
-  useEffect(() => {
-    console.log(session);
-  }, [session]);
+  // useEffect(() => {
+  //   console.log(session);
+  // }, [session]);
 
   const toggleVariant = useCallback(() => {
     if (variant === "LOGIN") {
