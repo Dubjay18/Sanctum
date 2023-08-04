@@ -33,9 +33,8 @@ const useRoutes = () => {
         onClick: () => {
           toast.success("signing out");
           signOut().then(() => {
-            toast.success("Logout successfully");
+            toast.success("Logout successfu");
           });
-          router.push("/");
         },
         href: "#",
         icon: HiArrowLeftOnRectangle,
