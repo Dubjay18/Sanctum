@@ -24,10 +24,16 @@ export default async function handler(
     user_id: session.user.email,
   };
 
-  const authResponse = pusherServer.authorizeChannel(
-    socketId,
-    channel,
-    data
-  );
-  return response.send(authResponse);
+  try {
+    const authResponse = pusherServer.authorizeChannel(
+      socketId,
+      channel,
+      data
+    );
+    return response.send(authResponse);
+  } catch (error) {
+    console.log(error);
+
+    return response.status(403).send({ message: error });
+  }
 }
